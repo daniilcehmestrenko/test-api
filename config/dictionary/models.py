@@ -12,7 +12,7 @@ class MyAllergy(models.Model):
             'Carrier',
             verbose_name='Носители'
         )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
             User,
             on_delete=models.CASCADE,
             verbose_name='Пользователь'

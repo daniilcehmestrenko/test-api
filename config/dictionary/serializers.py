@@ -1,4 +1,5 @@
-from rest_framework.serializers import CurrentUserDefault, HiddenField
+from rest_framework.serializers import (CurrentUserDefault, HiddenField,
+                                        PrimaryKeyRelatedField)
 from rest_framework import serializers
 
 from .models import Allergen, Carrier, Category, MyAllergy
@@ -29,8 +30,17 @@ class MyAllergySerializer(serializers.ModelSerializer):
     user = HiddenField(
             default=CurrentUserDefault()
         )
-    carriers = CarrierSerializer(many=True)
+    carriers = CarrierSerializer(
+            many=True,
+            read_only=True
+        )
+    carriers_id = PrimaryKeyRelatedField(
+            many=True,
+            write_only=True,
+            source='carriers',
+            queryset=Carrier.objects.all()
+        )
 
     class Meta:
         model = MyAllergy
-        fields = '__all__'
+        fields = ('name', 'carriers', 'carriers_id', 'user')
