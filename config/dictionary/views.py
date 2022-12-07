@@ -38,7 +38,9 @@ class MyAllergyView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
-        new_allergy = MyAllergy.objects.last()
+        new_allergy = MyAllergy.objects.filter(
+                user__pk=request.user.pk
+            ).last()
         serializer = MyAllergySerializerGET(new_allergy)
 
         return Response(serializer.data)
