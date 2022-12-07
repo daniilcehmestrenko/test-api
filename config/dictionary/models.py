@@ -18,6 +18,13 @@ class MyAllergy(models.Model):
             verbose_name='Пользователь'
         )
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Моя Аллергия'
+        verbose_name_plural = 'Карточки Аллергии'
+
 
 class Category(models.Model):
     name = models.CharField(
@@ -37,6 +44,10 @@ class Carrier(models.Model):
     name = models.CharField(
             max_length=100,
             verbose_name='Название'
+        )
+    image = models.ImageField(
+            upload_to='carriers',
+            verbose_name='Фото'
         )
     description = models.CharField(
             max_length=1000,
