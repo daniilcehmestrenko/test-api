@@ -27,10 +27,6 @@ class CarrierSerializer(serializers.ModelSerializer):
 
 
 class MyAllergySerializer(serializers.ModelSerializer):
-    name = CharField(
-            max_length=100,
-            read_only=True,
-        )
     user = HiddenField(
             default=CurrentUserDefault()
         )

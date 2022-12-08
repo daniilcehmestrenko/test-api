@@ -10,7 +10,7 @@ urlpatterns = [
             name='my_allergy_list'
         ),
         path(
-            '<int:pk>',
+            '<int:pk>/',
             MyAllergyDetailView.as_view(),
             name='my_allergy'
         ),
