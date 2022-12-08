@@ -1,4 +1,4 @@
-from rest_framework.serializers import (CurrentUserDefault, HiddenField,
+from rest_framework.serializers import (CharField, CurrentUserDefault, HiddenField,
                                         PrimaryKeyRelatedField)
 from rest_framework import serializers
 
@@ -27,6 +27,10 @@ class CarrierSerializer(serializers.ModelSerializer):
 
 
 class MyAllergySerializer(serializers.ModelSerializer):
+    name = CharField(
+            max_length=100,
+            read_only=True,
+        )
     user = HiddenField(
             default=CurrentUserDefault()
         )

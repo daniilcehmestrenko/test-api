@@ -1,9 +1,17 @@
 from django.urls import path
 
-from .views import MyAllergyView
-
+from .views import MyAllergyListView, MyAllergyDetailView
 
 
 urlpatterns = [
-        path('', MyAllergyView.as_view(), name='my_allergy')
+        path(
+            '',
+            MyAllergyListView.as_view(),
+            name='my_allergy_list'
+        ),
+        path(
+            '<int:pk>',
+            MyAllergyDetailView.as_view(),
+            name='my_allergy'
+        ),
     ]
