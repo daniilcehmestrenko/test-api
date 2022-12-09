@@ -1,4 +1,4 @@
-from rest_framework.serializers import (CharField, CurrentUserDefault, HiddenField,
+from rest_framework.serializers import (CurrentUserDefault, HiddenField,
                                         PrimaryKeyRelatedField)
 from rest_framework import serializers
 
