@@ -2,8 +2,6 @@ from rest_framework.generics import (ListAPIView, ListCreateAPIView,
                         RetrieveAPIView, RetrieveUpdateDestroyAPIView)
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from .models import Carrier, Category, MyAllergy
 from .serializers import (CarrierSerializer, CategorySerializer,
@@ -18,16 +16,17 @@ class CarrierDetailAPI(RetrieveAPIView):
 
 
 
-class CarriersListAPIView(APIView):
+class CarriersListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
+    serializer_class = CarrierSerializer
 
-    def get(self, request, category_pk):
-        carriers = Carrier.objects.filter(
+    def get_queryset(self):
+        category_pk = self.kwargs.get('category_pk')
+
+        return Carrier.objects.filter(
                 category__pk=category_pk
             )
-        serializer = CarrierSerializer(carriers, many=True)
 
-        return Response(serializer.data)
 
 class CategoryListAPIView(ListAPIView):
     queryset = Category.objects.all()
