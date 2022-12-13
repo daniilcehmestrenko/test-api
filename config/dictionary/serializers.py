@@ -12,6 +12,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class AllergenSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Allergen
         fields = '__all__'
@@ -32,7 +33,7 @@ class MyAllergySerializer(serializers.ModelSerializer):
         )
     carriers = CarrierSerializer(
             many=True,
-            read_only=True
+            read_only=True,
         )
     carriers_id = PrimaryKeyRelatedField(
             many=True,

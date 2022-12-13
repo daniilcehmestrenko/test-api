@@ -8,11 +8,10 @@ from .serializers import (CarrierSerializer, CategorySerializer,
                           MyAllergySerializer)
 
 
-class CarrierDetailAPI(RetrieveAPIView):
+class CarrierDetailAPIView(RetrieveAPIView):
     serializer_class = CarrierSerializer
     permission_classes = [IsAuthenticated]
     queryset = Carrier.objects.all()
-    lookup_field = 'pk'
 
 
 

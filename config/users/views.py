@@ -1,4 +1,4 @@
-from rest_framework import status
+from django.shortcuts import redirect
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
@@ -19,7 +19,7 @@ class UserRegisterView(CreateAPIView):
             serializer.save()
             data['response'] = True
             
-            return Response(data, status=status.HTTP_200_OK)
+            return redirect('token_obtain_pair')
         else:
             data = serializer.errors
 

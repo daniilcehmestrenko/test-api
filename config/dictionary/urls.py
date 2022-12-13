@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (CarrierDetailAPI, CategoryListAPIView, MyAllergyListAPIView,
+from .views import (CarrierDetailAPIView, CategoryListAPIView, MyAllergyListAPIView,
                     MyAllergyDetailAPIView, CarriersListAPIView)
 
 
@@ -27,7 +27,7 @@ urlpatterns = [
         ),
         path(
             'carrier/<int:pk>/',
-            CarrierDetailAPI.as_view(),
+            CarrierDetailAPIView.as_view(),
             name='carrier'
         )
     ]
