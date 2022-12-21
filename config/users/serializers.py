@@ -20,7 +20,7 @@ class UserRegisterSerializer(ModelSerializer):
 
         if password != password2:
             raise ValidationError(
-                    {password: 'Пароли не совпадают'}
+                    {'password2': 'Пароли не совпадают'}
                 )
         user.set_password(password)
         user.save()
