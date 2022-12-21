@@ -19,7 +19,7 @@ class UserRegisterView(CreateAPIView):
             serializer.save()
             data['response'] = True
             
-            return redirect('token_obtain_pair')
+            return Response({"message": "Реагистрация прошла успешно"})
         else:
             data = serializer.errors
 
